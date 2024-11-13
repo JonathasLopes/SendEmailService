@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
-import transporter from '../Configurations/emailSenderSS';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
+import sgMail from '@sendgrid/mail';
+
+sgMail.setApiKey(process.env.SSSENDGRIDKEY);
 
 class SecretSurpriseService {
     async sendMFA(request: Request, response: Response) {
@@ -31,7 +33,7 @@ class SecretSurpriseService {
         };
 
         try {
-            await transporter.sendMail(mailOptions);
+            await sgMail.send(mailOptions);
 
             response.json({ message: "Email sent!" });
         } catch (error) {
