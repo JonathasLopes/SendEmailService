@@ -1,18 +1,17 @@
 import nodemailer from 'nodemailer';
+import sgMail from '@sendgrid/mail';
+
+sgMail.setApiKey(process.env.SSSENDGRIDKEY);
 
 const transporter = nodemailer.createTransport({
   host: process.env.SSMAILER,
-  port: 587,
+  port: parseInt(process.env.SSPORT),
   secure: false,
   logger: true,
   debug: true,
-  tls: {
-    ciphers: "SSLv3",
-    rejectUnauthorized: false
-  },
   auth: {
-    user: process.env.SSEMAIL,
-    pass: process.env.SSPASSWORD
+    user: "apikey",
+    pass: process.env.SENDGRID_API_KEY,
   }
 });
 
