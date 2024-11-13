@@ -4,8 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import sgMail from '@sendgrid/mail';
 
-sgMail.setApiKey(process.env.SSSENDGRIDKEY);
-
 class SecretSurpriseService {
     async sendMFA(request: Request, response: Response) {
         const { mfaCode, email } = request.body;
