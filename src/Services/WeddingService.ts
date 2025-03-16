@@ -6,7 +6,7 @@ import sgMail from '@sendgrid/mail';
 
 class WeddingService {
     async sendNotConfirmed(request: Request, response: Response) {
-        const { names } = request.body;
+        const { names, total } = request.body;
 
         if (!names) {
             response.status(400).json({ message: 'Data missing!' });
@@ -18,6 +18,7 @@ class WeddingService {
 
         const context = {
             names: names.split(","),
+            total: total,
             year: new Date().getFullYear()
         };
 
