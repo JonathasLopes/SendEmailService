@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
-import sgMail from '@sendgrid/mail';
+//import sgMail from '@sendgrid/mail';
+import { sendEmail } from '../Helpers/SendEmailSMTPHelper';
 
 class WeddingService {
     async sendNotConfirmed(request: Request, response: Response) {
@@ -32,7 +33,7 @@ class WeddingService {
         };
 
         try {
-            await sgMail.send(mailOptions);
+            await sendEmail(mailOptions);
 
             response.json({ message: "Email sent!" });
         } catch (error) {
