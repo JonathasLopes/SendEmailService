@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
-import { sendEmail } from '../Helpers/SendEmailSMTPHelper';
+import sgMail from '@sendgrid/mail';
 
 class SecretSurpriseService {
     async sendMFA(request: Request, response: Response) {
@@ -31,7 +31,7 @@ class SecretSurpriseService {
         };
 
         try {
-            await sendEmail(mailOptions);
+            await sgMail.send(mailOptions);
 
             response.json({ message: "Email sent!" });
         } catch (error) {
