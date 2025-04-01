@@ -6,6 +6,8 @@
 ![Issues](https://img.shields.io/github/issues/JonathasLopes/SendEmailService)
 ![Licença](https://img.shields.io/github/license/JonathasLopes/SendEmailService)
 
+[![Powered by Vercel](https://img.shields.io/badge/Powered%20by-Vercel-black?style=flat&logo=vercel)](https://vercel.com/)
+
 O **SendEmailService** é um serviço desenvolvido em **Node.js** com **TypeScript** para facilitar o envio de e-mails de forma eficiente e segura. O projeto utiliza **Handlebars** para a estilização do corpo dos e-mails, permitindo templates dinâmicos e personalizados.
 
 ## Funcionalidades
