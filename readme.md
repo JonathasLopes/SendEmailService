@@ -1,4 +1,10 @@
-# SendEmailService
+# 📨 Send Email Service
+
+![Linguagens](https://img.shields.io/github/languages/count/JonathasLopes/SendEmailService)
+![Repo Size](https://img.shields.io/github/repo-size/JonathasLopes/SendEmailService)
+![Último Commit](https://img.shields.io/github/last-commit/JonathasLopes/SendEmailService)
+![Issues](https://img.shields.io/github/issues/JonathasLopes/SendEmailService)
+![Licença](https://img.shields.io/github/license/JonathasLopes/SendEmailService)
 
 O **SendEmailService** é um serviço desenvolvido em **Node.js** com **TypeScript** para facilitar o envio de e-mails de forma eficiente e segura. O projeto utiliza **Handlebars** para a estilização do corpo dos e-mails, permitindo templates dinâmicos e personalizados.
 
