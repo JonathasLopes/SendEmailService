@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
-import sgMail from '@sendgrid/mail';
+import Mail from 'nodemailer/lib/mailer';
+import { SenderEmail } from '../Helpers/SenderEmail';
+//import sgMail from '@sendgrid/mail';
 
 class WeddingService {
     async sendNotConfirmed(request: Request, response: Response) {
@@ -24,7 +26,7 @@ class WeddingService {
 
         const htmlToSend = compiledTemplate(context);
 
-        const mailOptions = {
+        const mailOptions: Mail.Options = {
             from: process.env.SSEMAIL,
             to: process.env.MYEMAIL,
             subject: 'Wedding - Jonathas e Bianca',
@@ -32,10 +34,12 @@ class WeddingService {
         };
 
         try {
-            await sgMail.send(mailOptions);
+            //await sgMail.send(mailOptions);
+            await SenderEmail(mailOptions);
 
             response.json({ message: "Email sent!" });
         } catch (error) {
+            console.log(error);
             response.status(500).json({ message: `There was a problem sending email! ${error}` });
         }
 

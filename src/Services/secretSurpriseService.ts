@@ -2,7 +2,9 @@ import { Request, Response } from 'express';
 import handlebars from 'handlebars';
 import fs from 'fs';
 import path from 'path';
-import sgMail from '@sendgrid/mail';
+import { SenderEmail } from '../Helpers/SenderEmail';
+import Mail from 'nodemailer/lib/mailer';
+//import sgMail from '@sendgrid/mail';
 
 class SecretSurpriseService {
     async sendMFA(request: Request, response: Response) {
@@ -23,7 +25,7 @@ class SecretSurpriseService {
 
         const htmlToSend = compiledTemplate(context);
 
-        const mailOptions = {
+        const mailOptions: Mail.Options = {
             from: process.env.SSEMAIL,
             to: email,
             subject: 'SecretSurprise - MFA Code',
@@ -31,7 +33,8 @@ class SecretSurpriseService {
         };
 
         try {
-            await sgMail.send(mailOptions);
+            //await sgMail.send(mailOptions);
+            await SenderEmail(mailOptions);
 
             response.json({ message: "Email sent!" });
         } catch (error) {
